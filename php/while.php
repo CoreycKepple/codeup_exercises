@@ -1,8 +1,8 @@
 <?php
 
-$test = 5;
+$test = 2;
 
-while ($test <=15){
+while ($test <=100){
 	echo "$test\n";
 	++$test;
 }
