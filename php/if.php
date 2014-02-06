@@ -1,6 +1,6 @@
 <?php
 $a = 11;
-$b = 1;
+$b = 15;
 $c = '15';
 if ($a <$b){
 	echo "$a is less than $b\n";
