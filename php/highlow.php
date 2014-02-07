@@ -4,6 +4,12 @@ if ($argc !=3){
 	echo "Incorrect number of arguments were input -- please only add two numeric values\n";
 	exit(0);
 }
+//Confirm to see if range of values will work for game
+if ($argv[1] > $argv[2]){
+	Echo "Error-- The minum range must be higher than maximum range to play\n";
+	exit(0);
+}
+
 //Confirm user input is a number -- if not set it to a number
 if (!is_numeric($argv[1])){
 	$argv[1]=1;
@@ -11,17 +17,13 @@ if (!is_numeric($argv[1])){
 if (!is_numeric($argv[2])){
 	$argv[2]=100;
 }
+
 //User will set range values in CLI
 //now convert user CLI input to variable
 $min = intval($argv[1]);
 $max = intval($argv[2]);
 
 
-//Check to determine user inputs were numeric
-if (!is_numeric($min) || !is_numeric($max)){
-	echo "You have entered values which are not numbers -- please enter two numbers to determine game range\n";
-	exit(0);
-}
 //Create Instructions
 // Take User's name
 echo "\n\n\n\n\n\n\n\n\n\n\n\n\n\tWelcome to High - Low!\n\n\tThe Object of the Game\n\n   is to guess the random number between\n\n\t       $min and $max \n\n\t       Have Fun!\n\n";
@@ -65,5 +67,4 @@ if ($guess <= 5){
 else{echo "{$name}\nTry again to get your guesses under 5\n";
 }
 exit(0);
-
-	?>
+?>
