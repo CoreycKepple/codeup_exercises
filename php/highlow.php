@@ -1,6 +1,6 @@
 <?php
 // Generate Random Number
-$random_number = rand(1,100);
+$random_number = mt_rand(1,100);
 // Prompt User to guess number
 //Evaluate guess based on random number
 do {
