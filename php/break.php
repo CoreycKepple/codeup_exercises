@@ -8,3 +8,13 @@ for($i=1;$i<=100;$i++){
 		continue;
 	}
 }
+echo "\n\n";
+
+//create a for loop that counts from 1 to 100 but breaks @ 10
+
+for($i=1;$i<=100;$i++){
+	echo "$i\n";
+	if ($i==10) {
+		break;
+	}
+}
