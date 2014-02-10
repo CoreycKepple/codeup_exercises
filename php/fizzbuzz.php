@@ -12,10 +12,10 @@ for ($start!=0;$start<=$end;$start+=1){
 	if ($start%5==0 && $start%3==0) {
 		echo "FIZZBUZZ\n";
 	}
-		elseif($start%5==0 && $start%3!=0){
+		elseif($start%5==0){
 			echo "BUZZ\n";
 		}
-		elseif ($start%3==0 && $start%5!=0) {
+		elseif ($start%3==0) {
 			echo "FIZZ\n";
 		}
 		else{
