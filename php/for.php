@@ -14,10 +14,16 @@ $incrementer = fgets(STDIN);
 //Trim EOL character from input variable
 $trimmed = trim($one,"\n");
 $text = $trimmed;
+$trimmed2 = trim($incrementer,"\n");
+
+//Default increment count to 1 if input is not numeric
+if (!is_numeric($trimmed2)){
+	$trimmed2=1;
+}
 
 //Create loop which counts from $one -> $two
-for ($text<$two;$text <= $two;$text+=$incrementer){
-echo "{$text}\n";
+for ($text<$two;$text <= $two;$text+=$trimmed2){
+echo "\n{$text}\n";
 }
 
 ?>
