@@ -14,7 +14,7 @@ if (!is_numeric($text)){
 }
 
 //Prompt User to create ending number
-fwrite(STDOUT, "Please choose the second number in our range: ");
+fwrite(STDOUT, "Please choose the final number in our range:  ");
 $two = fgets(STDIN);
 
 //Trim EOL character from input variable
