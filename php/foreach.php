@@ -1,6 +1,6 @@
 <?php
 //Explain the program to the user
-echo "\n\n\n\t\t\t\tHello!\n\n-- This program is designed to run through a pre-defined Array--\n\n\n";
+echo "\n\n\n\t\t\t\tHello!\n\n-- This program is designed to run through a pre-defined Array --\n\n\n";
 //Create prompt for user input to continue
 fwrite(STDIN, "Please press enter to continue..."."\n\n");
 fgets(STDIN);
