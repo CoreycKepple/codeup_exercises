@@ -21,17 +21,18 @@ $books = array(
         'pages' => 544
     )
 );
+//Confirm that book was published after 1950
 foreach($books as $key => $book){
-	echo "{$key}\n";
 	foreach ($book as $key1 => $value) {
-		if($key1=='published'){
-		echo "\tThis book was {$key1} in {$value}\n";
-		}elseif ($key1=='author') {
-		echo "\tThis books {$key1} was {$value}\n";
+		if($key1=='published' && $value>=1950){
+			echo "{$key}\n";
+			echo "\tThis book was {$key1} in {$value}\n";
+		}
+		elseif ($key1=='author') {
+			echo "\tThis books {$key1} is {$value}\n";
 		}
 		else{
-		echo "\tThe number of {$key1} in this book is {$value}\n";
+			echo "\tThe number of {$key1} in this book is {$value}\n";
 		}
-		
 	}
 }
