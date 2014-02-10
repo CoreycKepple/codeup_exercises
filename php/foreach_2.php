@@ -1,4 +1,7 @@
 <?php
+
+//Create an array of book titles
+//Nest an array within the array which contains info about each book
 $books = array(
     'The Hobbit' => array(
         'published' => 1937,
@@ -21,18 +24,19 @@ $books = array(
         'pages' => 544
     )
 );
-//Confirm that book was published after 1950
-foreach($books as $key => $book){
-	foreach ($book as $key1 => $value) {
-		if($key1=='published' && $value>=1950){
-			echo "{$key}\n";
-			echo "\tThis book was {$key1} in {$value}\n";
-		}
-		elseif ($key1=='author') {
-			echo "\tThis books {$key1} is {$value}\n";
-		}
-		else{
-			echo "\tThe number of {$key1} in this book is {$value}\n";
-		}
-	}
+//Create loop which echos the keys and values of the arrays
+//Create conditional which checks if book was published after 1950
+//Only display books after 1950
+foreach($books as $title => $book){
+     foreach ($book as $key => $value) {
+        if($value > 1950){
+            echo "\n{$title}\n";
+            echo "\tThis book was published in in {$book['published']}\n";
+            echo "\tThe autor of this book is {$book['author']}\n";
+            echo "\tThe number of pages in this book is {$book['pages']}\n";
+        }
+
+    }
 }
+
+
