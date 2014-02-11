@@ -1,9 +1,15 @@
 <?php
 //Create Error Function
+//Show values of functions which caused an error
 function validate($a,$b) {
 	if (!is_numeric($a) || !is_numeric($b)){
 		echo '[!!Error!!] : One of the numbers entered is non-numeric'.PHP_EOL;
-		echo "\t Input 1: {$a} ---- Input 2: {$b}".PHP_EOL;
+		echo "\t Input 1: ";
+		var_dump($a);
+		PHP_EOL;
+		echo "\t Input 2: ";
+		var_dump($b);
+		PHP_EOL;
 		return TRUE;
 	}else{
 	return FALSE;
@@ -46,6 +52,7 @@ function modulus($a,$b){
 		return $a%$b. PHP_EOL;
 	}
 }
+//Run Tests of functions
 
 echo add('peanut',0);
 echo subtract(50,25);
