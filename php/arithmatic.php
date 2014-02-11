@@ -1,65 +1,54 @@
 <?php
 //Create Error Function
-function error_nonnum($z){
-	if ($z==1){
-	echo '[!!Error!!] : Number is non-numeric'.PHP_EOL;
+function validate($a,$b) {
+	if (!is_numeric($a) || !is_numeric($b)){
+		echo '[!!Error!!] : One of the numbers entered is non-numeric'.PHP_EOL;
+		echo "\t Input 1: {$a} ---- Input 2: {$b}".PHP_EOL;
+		return TRUE;
 	}else{
-		echo '[!!Error!!] : Attmpted to divide by 0 -- not cool'. PHP_EOL;
+	return FALSE;
 	}
-
 }
 
 //Create addition function
 function add($a,$b){
-	if (is_numeric($a) && is_numeric($b)){
-		$c=$a+$b;
-		echo $c. PHP_EOL;
-	}else {
-		error_nonnum(1);
+	if (!validate($a,$b)){
+		return $a+$b. PHP_EOL;
 	}
+	
 }
 //Create subtraction function
 function subtract($a,$b){
-	if (is_numeric($a) && is_numeric($b)){
-		$c=$a-$b;
-		echo $c. PHP_EOL;
-	}else {
-		error_nonnum(1);
+	if (!validate($a,$b)){
+		return $a-$b. PHP_EOL;
 	}
 }
 //Create multiplication function
 function multiply($a,$b){
-	if (is_numeric($a) && is_numeric($b)){
-		$c=$a*$b;
-		echo $c. PHP_EOL;
-	}else {
-		error_nonnum(1);
+	if (!validate($a,$b)){
+	return $a*$b . PHP_EOL;
 	}
 }
 //Create division function
 function divide($a,$b){
-	if($b==0){
-		error_nonnum(2);
-	}elseif (is_numeric($a) && is_numeric($b)){
-		$c=$a/$b;
-		echo $c. PHP_EOL;
-	}else {
-		error_nonnum(1);
+	if ($b==0){
+		echo '[!!Error!!] : You tried to divide by 0 -- not cool.'.PHP_EOL;
+		echo "\t Input 1: {$a} ---- Input 2: {$b}".PHP_EOL;
+		return FALSE;
+	}
+	elseif (!validate($a,$b)){
+		return $a/$b . PHP_EOL;
 	}
 }
 //Create modulus function
 function modulus($a,$b){
-	if (is_numeric($a) && is_numeric($b)){
-		$c=$a%$b;
-		echo $c. PHP_EOL;
-	}else {
-		$z=1;
-		error_nonnum(TRUE);
+	if (!validate($a,$b)){
+		return $a%$b. PHP_EOL;
 	}
 }
 
-add(1,3.7837);
-subtract(50,25);
-multiply('apple',20);
-divide(50,0);
-modulus(100,10);
+echo add('peanut',0);
+echo subtract(50,25);
+echo multiply('apple',20);
+echo divide(50,10);
+echo modulus(100,3);
