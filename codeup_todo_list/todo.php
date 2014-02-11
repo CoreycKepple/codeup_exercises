@@ -13,7 +13,7 @@ do {
     }
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (Q)uit : ';
+    echo '(N)ew item, (R)emove item, (Q)uit, (D)isplay : ';
 
     // Get the input from user
     // Use trim() to remove whitespace and newlines
@@ -32,7 +32,16 @@ do {
         $key = trim(fgets(STDIN)-1);
         // Remove from array
         unset($items[$key]);
-    }
+        //Resets array values when Item is removed from array
+        $items = array_values($items);
+    }   elseif ($input == 'D' || $input == 'd') {
+        //display current items
+            if (empty($items)) {
+                echo "\nNo Current Items to Display\n\n\n";
+            }else{
+                null;
+            }
+        }
 // Exit when input is (Q)uit
 } while ($input != 'Q' && $input != 'q');
 
