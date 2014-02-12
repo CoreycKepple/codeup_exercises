@@ -5,22 +5,21 @@ $items = array();
 
 // List array items formatted for CLI
 function list_items($list){
+    $a = '';
     // Return string of list items separated by newlines.
-    $a="";
     foreach ($list as $key => $item) {
-        $key++;
-        $a.="[{$key}]{$item}".PHP_EOL;
+          $a .= "[" . ($key + 1). "]".$item.PHP_EOL;
+        // $a .= "[". $key+1 ."]". $item .PHP_EOL;
     }
-        return $a;
+    return $a;
 }
 
 // Get STDIN, strip whitespace and newlines, 
 // and convert to uppercase if $upper is true
-function get_input($upper = FALSE) 
-{
+function get_input($upper = FALSE) {
     if($upper == TRUE){
-    return strtoupper(trim(fgets(STDIN)));
-    }else{
+        return strtoupper(trim(fgets(STDIN)));
+    }else {
         return trim(fgets(STDIN));
     }
 
@@ -32,7 +31,7 @@ do {
     echo list_items($items);
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (Q)uit : ';
+    echo '(N)ew item, (R)emove item, (Q)uit, (S)ort : ';
 
     // Get the input from user
     // Use trim() to remove whitespace and newlines
@@ -44,7 +43,19 @@ do {
         echo 'Enter item: ';
         // Add entry to list array
         $items[] = get_input();
-    } elseif ($input == 'R') {
+    }elseif($input =='S'){
+        //Sort which way
+        echo 'Sort (A) to Z OR (Z) to A : ';
+        $input = get_input(TRUE);
+        if($input =='A'){
+            sort($items);
+        }elseif($input == 'Z'){
+            rsort($items);
+        }else{
+            echo "[ERROR -- A or Z were not entered -- Please restart program]".PHP_EOL;
+            return;
+        }
+     }elseif ($input == 'R') {
         // Remove which item?
         echo 'Enter item number to remove: ';
         // Get array key
