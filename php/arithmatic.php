@@ -37,7 +37,7 @@ function multiply($a,$b){
 }
 //Create division function
 function divide($a,$b){
-	if ($b==0){
+	if ($b===0){
 		echo '[!!Error!!] : You tried to divide by 0 -- not cool.'.PHP_EOL;
 		echo "\t Input 1: {$a} ---- Input 2: {$b}".PHP_EOL;
 		return FALSE;
@@ -57,5 +57,5 @@ function modulus($a,$b){
 echo add('peanut',0);
 echo subtract(50,25);
 echo multiply('apple',20);
-echo divide(50,10);
+echo divide(50,0);
 echo modulus(100,3);
