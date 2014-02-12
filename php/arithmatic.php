@@ -10,9 +10,7 @@ function validate($a,$b) {
 		echo "\t Input 2: ";
 		var_dump($b);
 		PHP_EOL;
-		return TRUE;
-	}else{
-	return FALSE;
+		return;
 	}
 }
 
@@ -40,7 +38,7 @@ function divide($a,$b){
 	if ($b===0){
 		echo '[!!Error!!] : You tried to divide by 0 -- not cool.'.PHP_EOL;
 		echo "\t Input 1: {$a} ---- Input 2: {$b}".PHP_EOL;
-		return FALSE;
+		return;
 	}
 	elseif (!validate($a,$b)){
 		return $a/$b . PHP_EOL;
