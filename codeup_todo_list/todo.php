@@ -43,13 +43,12 @@ do {
         $firstlast = get_input(TRUE);
             // Ask for entry
             echo 'Enter item: ';
+            $input= get_input();
         if ($firstlast == 'Y') {
             // Add entry to list array
-            $input= get_input();
             array_unshift($items, $input);
         }else{
             // Add entry to list array
-            $input= get_input();
             array_push($items, $input);
         }
        
