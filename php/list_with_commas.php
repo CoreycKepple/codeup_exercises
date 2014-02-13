@@ -1,29 +1,30 @@
 <?php
+function get_input($upper = FALSE) {
+    if($upper == TRUE){
+        return strtoupper(trim(fgets(STDIN)));
+    }else {
+        return trim(fgets(STDIN));
+    }
+}
 
 
-// function humanized_list($array){
-// $a =implode(', ', $array);
-// PHP_EOL;
-// return $a;
-// }
-
-// $famous_fake_physicists= 'Gordon Freeman, Samantha Carter, Sheldon Cooper, Quinn Mallory, Bruce Banner, and Tony Stark';
-
-// $phys_array = explode(', ', $famous_fake_physicists);
-
-
-
-
-// echo humanized_list($phys_array).PHP_EOL;
-// <?php
-
-// Converts array into list n1, n2, ..., and n3
-function humanized_list($string) {
- $array= explode(', ', $string);
- array_pop($array);
- array_push($array,'and Tony Stark');
- $sentence= implode(', ', $array);
- return $sentence;
+function humanized_list($string, $sort='N') {
+	echo 'Do you want to sort your list alphabetically? -- (Y) or (N): ';
+	$sort= get_input(TRUE);
+	if ($sort == 'Y') {
+		$array= explode(', ', $string);
+ 		sort($array);
+ 		$name=array_pop($array);
+ 		array_push($array,'and '.$name);
+ 		$sentence= implode(', ', $array);
+ 		return $sentence;	
+ 	}else{
+ 		$array= explode(', ', $string);
+ 		$name=array_pop($array);
+ 		array_push($array,'and '.$name);
+ 		$sentence= implode(', ', $array);
+ 		return $sentence;
+	}
 }
 
 
