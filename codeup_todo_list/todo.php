@@ -40,16 +40,14 @@ do {
     if ($input == 'N') {
         // Add to begining or end of list
         echo 'Is the item high priority (Y)es or (N)o : ';
-        $firstlast = get_input();
-        if ($firstlast == '!') {
+        $firstlast = get_input(TRUE);
             // Ask for entry
             echo 'Enter item: ';
+        if ($firstlast == 'Y') {
             // Add entry to list array
             $input= get_input();
             array_unshift($items, $input);
         }else{
-            // Ask for entry
-            echo 'Enter item: ';
             // Add entry to list array
             $input= get_input();
             array_push($items, $input);
