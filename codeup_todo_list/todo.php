@@ -9,7 +9,6 @@ function list_items($list){
     // Return string of list items separated by newlines.
     foreach ($list as $key => $item) {
           $a .= "[" . ($key + 1). "]".$item.PHP_EOL;
-        // $a .= "[". $key+1 ."]". $item .PHP_EOL;
     }
     return $a;
 }
@@ -39,10 +38,23 @@ do {
 
     // Check for actionable input
     if ($input == 'N') {
-        // Ask for entry
-        echo 'Enter item: ';
-        // Add entry to list array
-        $items[] = get_input();
+        // Add to begining or end of list
+        echo 'Is the item high priority (Y)es or (N)o : ';
+        $firstlast = get_input();
+        if ($firstlast == '!') {
+            // Ask for entry
+            echo 'Enter item: ';
+            // Add entry to list array
+            $input= get_input();
+            array_unshift($items, $input);
+        }else{
+            // Ask for entry
+            echo 'Enter item: ';
+            // Add entry to list array
+            $input= get_input();
+            array_push($items, $input);
+        }
+       
     }elseif($input =='S'){
         //Sort which way
         echo 'Sort (A) to Z OR (Z) to A : ';
@@ -64,6 +76,10 @@ do {
         unset($items[$key-1]);
         //Resets array values when Item is removed from array
         $items = array_values($items);
+    }elseif ($input =='F'){
+        array_shift($items);
+    }elseif ($input == 'L'){
+        array_pop($items);
     }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
