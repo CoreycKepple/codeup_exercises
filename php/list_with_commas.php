@@ -8,7 +8,7 @@ function get_input($upper = FALSE) {
 }
 
 
-function humanized_list($string, $sort='N') {
+function humanized_list($string) {
 	echo 'Do you want to sort your list alphabetically? -- (Y) or (N): ';
 	$sort= get_input(TRUE);
 	if ($sort == 'Y') {
