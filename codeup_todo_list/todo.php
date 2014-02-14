@@ -48,7 +48,7 @@ do {
     echo list_items($items);
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (Q)uit, (S)ort, (O)pen File, : ';
+    echo '(N)ew item, (R)emove item, (S)ort, (O)pen File, (Q)uit : ';
 
     // Get the input from user
     // Use trim() to remove whitespace and newlines
@@ -96,11 +96,37 @@ do {
     }elseif ($input == 'L'){
         array_pop($items);
     }elseif ($input == 'O'){
-        echo 'Enter file name: ';
-        $input=get_input();
-        $handle=fopen($input, 'r');
-        $items=addFile($handle,$items,$input);
-}
+        echo '(L)oad file or (S)ave file: ';
+        $input2=get_input(TRUE);
+            if ($input2== 'L') {
+            echo 'Enter file name: ';
+            $input=get_input();
+            $handle=fopen($input, 'r');
+            echo 'Add to current list -- Y/N : ';
+            $input3=get_input(TRUE);
+                if($input3=='Y'){
+                $items=addFile($handle,$items,$input);
+                }else{
+                    echo 'File not loaded'.PHP_EOL;
+                }
+            }elseif($input2=='S'){
+            echo'Are you sure you want to save -- will overwrite previous data | Y/N: ';
+            $y=get_input(TRUE);
+                if ($y=='Y') {
+                    echo 'Enter file name: ';
+                    $input=get_input();
+                    $handle=fopen($input, 'w');
+                    $string=implode("\n", $items);
+                    fwrite($handle, $string);
+                    echo '***Save succesful'.PHP_EOL;
+                }else{
+                    echo '***Save aborted'.PHP_EOL;
+                }
+            
+        }else{
+            echo '[!!Error!!] incorrect character entered'.PHP_EOL;
+        }
+    }    
 // Exit when input is (Q)uit
 } while ($input != 'Q');
 
