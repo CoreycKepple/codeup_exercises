@@ -30,6 +30,7 @@ function get_input($upper = FALSE) {
 // line to the current TODO list
 function addFile($handle, $items, $filename){
     $contents=fread($handle, filesize($filename));
+    fclose($handle);
     $array = explode("\n", $contents);
     foreach ($array as $value) {
         array_push($items, $value);
