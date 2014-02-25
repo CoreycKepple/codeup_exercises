@@ -145,7 +145,7 @@ while ($dealerscore < 21  && $playerscore < 21) {
 		echoHand($dealer,$name2,TRUE);
 		$dealerscore = getHandTotal($dealer);
 		echo PHP_EOL."Dealer Score: ".$dealerscore.PHP_EOL.PHP_EOL;
-	}elseif ($dealerscore == 17 && $playerscore >=17 && $playerscore <= 21) {
+	}elseif ($dealerscore >= 17 && $playerscore >=17 && $playerscore <= 21  && $playerscore > $dealerscore) {
 		$dealer = drawCard($dealer,$deck);
 		echoHand($dealer,$name2,TRUE);
 		$dealerscore = getHandTotal($dealer);
