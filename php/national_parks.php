@@ -9,17 +9,30 @@ if ($mysqli->connect_errno) {
 }
 
 // Retrieve a result set using SELECT
-$result = $mysqli->query("SELECT name,location,description, date_established, area_in_acres FROM national_parks");
+$result = $mysqli->query("SELECT name,location, date_established, area_in_acres,description FROM national_parks");
 
 
 if (isset($_GET['sort'])) {
 	$key = $_GET['sort'];
-	$result = $mysqli->query("SELECT name,location,description, date_established, area_in_acres FROM national_parks ORDER BY $key");
+	$result = $mysqli->query("SELECT name,location, date_established, area_in_acres, description FROM national_parks ORDER BY $key");
 }
 
 if (isset($_GET['dessort'])) {
 	$key = $_GET['dessort'];
-	$result = $mysqli->query("SELECT name,location,description, date_established, area_in_acres FROM national_parks ORDER BY $key DESC");
+	$result = $mysqli->query("SELECT name,location, date_established, area_in_acres, description FROM national_parks ORDER BY $key DESC");
+}
+
+//Check form submission for new park
+
+if((!empty($_POST['addName'])) && (!empty($_POST['addLoc'])) && (!empty($_POST['addYear'])) && (!empty($_POST['addArea']))  && (!empty($_POST['addDes']))) {
+
+	$stmt = $mysqli->prepare ("INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (?, ?, ?, ?, ?)");
+	
+	$stmt->bind_param("sssss", $_POST['addName'], $_POST['addLoc'], $_POST['addYear'], $_POST['addArea'], $_POST['addDes']);
+
+	$stmt->execute();
+	header("Location: national_parks_site.php");
+    exit(0);
 }
 ?>
 
